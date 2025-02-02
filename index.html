@@ -412,18 +412,33 @@ document.addEventListener("contextmenu", function (event) {
 });
 
 document.addEventListener("keydown", function (event) {
+    // List of keys to block
     if (
-        event.keyCode === 123 || // F12 (DevTools)
-        (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 74)) || // Ctrl + Shift + I or J (DevTools)
-        (event.ctrlKey && event.keyCode === 85) || // Ctrl + U (View Source)
-        (event.metaKey && event.altKey && event.keyCode === 85) // ⌘ + Option + U (Mac View Source)
+        event.key === "F12" || // F12 (DevTools)
+        (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) || // Ctrl + Shift + I or J (DevTools)
+        (event.ctrlKey && event.key === "U") || // Ctrl + U (View Source)
+        (event.metaKey && event.altKey && event.key.toUpperCase() === "U") // ⌘ + Option + U (Mac View Source)
     ) {
         event.preventDefault();
-        alert("Viewing source is disabled!");
+        alert("Keyboard shortcuts are disabled!");
+        return false;
     }
 });
 
+// Also block shortcuts on "keyup" event for extra security
+document.addEventListener("keyup", function (event) {
+    if (
+        event.key === "F12" || 
+        (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) || 
+        (event.ctrlKey && event.key === "U") || 
+        (event.metaKey && event.altKey && event.key.toUpperCase() === "U")
+    ) {
+        event.preventDefault();
+        return false;
+    }
+});
 
+        
 function returnToGuide() {
     document.getElementById("passport").style.display = "none"; // Hide passport section
     document.getElementById("info").style.display = "block"; // Show main guide
