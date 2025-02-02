@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hitchhiker's Guide to the Galaxy</title>
     <style>
+        body {
+    user-select: none; /* Prevents text selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
         @media screen and (max-width: 768px) {
     #guide-device {
         display: none;
@@ -406,6 +412,13 @@
     </div>
 
     <script>
+        document.addEventListener("keydown", function(event) {
+    if ((event.ctrlKey || event.metaKey) && event.key === "c") {
+        event.preventDefault();
+        alert("Copying is disabled on this page!");
+    }
+});
+
 document.addEventListener("contextmenu", function (event) {
     event.preventDefault();
     alert("Right-click is disabled.");
