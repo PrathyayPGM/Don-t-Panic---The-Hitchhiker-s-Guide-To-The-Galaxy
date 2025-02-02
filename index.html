@@ -408,7 +408,7 @@
     <script>
 document.addEventListener("contextmenu", function (event) {
     event.preventDefault();
-    alert("Right-click is disabled on this page.");
+    alert("Right-click is disabled on this page. No way you can copy the code now! Good try though.");
 });
 
 document.addEventListener("keydown", function (event) {
@@ -420,7 +420,7 @@ document.addEventListener("keydown", function (event) {
         (event.metaKey && event.altKey && event.key.toUpperCase() === "U") // ⌘ + Option + U (Mac View Source)
     ) {
         event.preventDefault();
-        alert("Keyboard shortcuts are disabled!");
+        alert("Keyboard shortcuts for right click are disabled! Good try though.");
         return false;
     }
 });
