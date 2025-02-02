@@ -1,4 +1,4 @@
-
+z
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -409,20 +409,21 @@
     </div>
 
     <script>
-document.addEventListener("contextmenu", function (event) {
-    event.preventDefault();
-    alert("Right-click is disabled on this page.");
-});
-
-document.addEventListener("keydown", function (event) {
-    // Prevents opening DevTools (F12, Ctrl+Shift+I, Ctrl+Shift+J)
-    if (event.keyCode === 123 || 
-        (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 74)) || 
-        (event.ctrlKey && event.keyCode === 85)) {
+window.onload = function() {
+    document.addEventListener("contextmenu", function (event) {
         event.preventDefault();
-        alert("Inspecting elements is disabled!");
-    }
-});
+    });
+
+    document.onkeydown = function (event) {
+        if (event.key === "F12" || 
+            (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) || 
+            (event.ctrlKey && event.key === "U")) {
+            event.preventDefault();
+            return false;
+        }
+    };
+};
+
 function returnToGuide() {
     document.getElementById("passport").style.display = "none"; // Hide passport section
     document.getElementById("info").style.display = "block"; // Show main guide
