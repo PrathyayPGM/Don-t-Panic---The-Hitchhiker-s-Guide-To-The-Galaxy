@@ -6,12 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hitchhiker's Guide to the Galaxy</title>
     <style>
-        body {
-    user-select: none; /* Prevents text selection */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
+   
         @media screen and (max-width: 768px) {
     #guide-device {
         display: none;
@@ -412,36 +407,32 @@
     </div>
 
     <script>
-        document.addEventListener("keydown", function(event) {
-    if ((event.ctrlKey || event.metaKey) && event.key === "c") {
-        event.preventDefault();
-        alert("Copying is disabled on this page!");
-    }
-});
-
+ // Disable Right-Click
 document.addEventListener("contextmenu", function (event) {
     event.preventDefault();
     alert("Right-click is disabled.");
-}, false);
+});
 
+// Disable DevTools (F12, Ctrl+Shift+I, Ctrl+Shift+J)
 document.addEventListener("keydown", function (event) {
-    // Define keys to block
-    const blockedKeys = [
-        "F12", // DevTools
-        "I", "J", "U" // Prevent Inspect, Console, and View Source
-    ];
-
     if (
-        (event.ctrlKey && event.shiftKey && blockedKeys.includes(event.key.toUpperCase())) || // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
-        (event.metaKey && event.altKey && event.key.toUpperCase() === "U") || // ⌘+Option+U (Mac)
-        event.key === "F12" // F12 Key
+        event.key === "F12" || 
+        (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) ||
+        (event.ctrlKey && event.key === "U") ||
+        (event.metaKey && event.altKey && event.key.toUpperCase() === "U") // ⌘ + Option + U
     ) {
         event.preventDefault();
-        event.stopPropagation(); // Fully stop event
         alert("Keyboard shortcuts are disabled!");
         return false;
     }
-}, true); // Use "true" to capture the event early
+});
+
+// Disable Copy-Paste
+document.addEventListener("copy", function (event) {
+    event.preventDefault();
+    alert("Copying is disabled!");
+});
+
 
 
         
