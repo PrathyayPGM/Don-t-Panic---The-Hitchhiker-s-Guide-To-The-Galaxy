@@ -408,35 +408,27 @@
     <script>
 document.addEventListener("contextmenu", function (event) {
     event.preventDefault();
-    alert("Right-click is disabled on this page.");
-});
+    alert("Right-click is disabled.");
+}, false);
 
 document.addEventListener("keydown", function (event) {
-    // List of keys to block
+    // Define keys to block
+    const blockedKeys = [
+        "F12", // DevTools
+        "I", "J", "U" // Prevent Inspect, Console, and View Source
+    ];
+
     if (
-        event.key === "F12" || // F12 (DevTools)
-        (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) || // Ctrl + Shift + I or J (DevTools)
-        (event.ctrlKey && event.key === "U") || // Ctrl + U (View Source)
-        (event.metaKey && event.altKey && event.key.toUpperCase() === "U") // ⌘ + Option + U (Mac View Source)
+        (event.ctrlKey && event.shiftKey && blockedKeys.includes(event.key.toUpperCase())) || // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+        (event.metaKey && event.altKey && event.key.toUpperCase() === "U") || // ⌘+Option+U (Mac)
+        event.key === "F12" // F12 Key
     ) {
         event.preventDefault();
+        event.stopPropagation(); // Fully stop event
         alert("Keyboard shortcuts are disabled!");
         return false;
     }
-});
-
-// Also block shortcuts on "keyup" event for extra security
-document.addEventListener("keyup", function (event) {
-    if (
-        event.key === "F12" || 
-        (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) || 
-        (event.ctrlKey && event.key === "U") || 
-        (event.metaKey && event.altKey && event.key.toUpperCase() === "U")
-    ) {
-        event.preventDefault();
-        return false;
-    }
-});
+}, true); // Use "true" to capture the event early
 
 
         
