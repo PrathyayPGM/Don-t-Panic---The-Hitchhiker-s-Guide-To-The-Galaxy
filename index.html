@@ -409,7 +409,20 @@
     </div>
 
     <script>
+document.addEventListener("contextmenu", function (event) {
+    event.preventDefault();
+    alert("Right-click is disabled on this page.");
+});
 
+document.addEventListener("keydown", function (event) {
+    // Prevents opening DevTools (F12, Ctrl+Shift+I, Ctrl+Shift+J)
+    if (event.keyCode === 123 || 
+        (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 74)) || 
+        (event.ctrlKey && event.keyCode === 85)) {
+        event.preventDefault();
+        alert("Inspecting elements is disabled!");
+    }
+});
 function returnToGuide() {
     document.getElementById("passport").style.display = "none"; // Hide passport section
     document.getElementById("info").style.display = "block"; // Show main guide
