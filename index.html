@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -817,6 +818,40 @@ gun: { title: "Kill-O-Zap Gun", description: "The Kill-o-Zap is a blaster gun we
 
             document.getElementById("chat-input").value = "";
         }
-    </script>
+    
+function showItem(category, key) {
+    const item = guide[category][key];
+    const infoTitle = document.getElementById("info-title");
+    const infoDescription = document.getElementById("info-description");
+    const infoImage = document.getElementById("info-image");
+
+    infoTitle.textContent = item.title;
+    infoDescription.textContent = item.description;
+
+    if (item.image) {
+        infoImage.src = item.image;
+        infoImage.style.display = "block";
+    } else {
+        infoImage.style.display = "none";
+    }
+
+    const infoTable = document.getElementById("info-table");
+    if (item.table) {
+        infoTable.innerHTML = `<table>
+            <tr><th>Property</th><th>Value</th></tr>
+            ${item.table.map(row => `<tr><td>${row.property}</td><td>${row.value}</td></tr>`).join("")}
+        </table>`;
+        infoTable.style.display = "block";
+    } else {
+        infoTable.style.display = "none";
+    }
+
+    // **Scroll to the bottom of the page**
+    setTimeout(() => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }, 300);
+}
+
+</script>
 </body>
 </html>
