@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hitchhiker's Guide to the Galaxy</title>
     <style>
-   
         @media screen and (max-width: 768px) {
-    #guide-device {
-        display: none;
-    }
-}
+            #guide-device {
+                display: none;
+            }
+        }
+
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(120deg, #1a1a2e, #16213e);
@@ -20,66 +19,48 @@
             padding: 20px;
         }
 
-
         h1 {
             font-size: 2.5em;
             color: #fddb3a;
         }
-#marvin-chat {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 100;
-}
 
-#marvin-toggle {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOIzZlRMwVLStLdbieCLBZVcZr8T3CdR_yNw&s'); /* Replace with Marvin's image */
-    background-size: cover;
-    background-position: center;
-    border: none;
-    border-radius: 50%; /* Makes the button circular like Marvin's head */
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    outline: none;
-}
+        #guide-device {
+            position: fixed;
+            bottom: 50px;
+            left: 50px;
+            width: 100px;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            border: 2px solid #fddb3a;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 219, 58, 0.8), inset 0 0 10px rgba(255, 219, 58, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            animation: float 3s ease-in-out infinite;
+        }
 
-#marvin-toggle:hover {
-    transform: scale(1.1);
-}
+        #guide-device:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 219, 58, 1), inset 0 0 20px rgba(255, 219, 58, 0.7);
+        }
 
-#marvin-toggle::after {
-    content: "Don’t click on me and ask questions, I’m too depressed.";
-    position: absolute;
-    top: -60px; /* Position the speech bubble above Marvin's head */
-    left: -30px;
-    width: 200px;
-    background-color: #16213e;
-    color: #fddb3a;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 0.9em;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    display: none; /* Hide by default */
-}
+        #dont-panic-text {
+            font-family: "Courier New", monospace;
+            font-size: 1.2em;
+            color: #fddb3a;
+            text-shadow: 0 0 10px #fddb3a, 0 0 20px #fddb3a;
+            text-align: center;
+        }
 
-#marvin-toggle:hover::after {
-    display: block; /* Show the speech bubble on hover */
-}
-
-#marvin-expanded {
-    display: none;
-    width: 300px;
-    height: 400px;
-    background-color: #16213e;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-}
-
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
 
         .category-buttons {
             display: flex;
@@ -97,7 +78,6 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             transition: transform 0.2s, background-color 0.3s;
         }
 
@@ -106,91 +86,43 @@
             transform: scale(1.1);
         }
 
-        #search-bar {
-            margin: 20px auto;
-            display: flex;
-            justify-content: center;
+        #marvin-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
         }
 
-        #search-bar input {
-            width: 300px;
-            padding: 10px;
-            font-size: 1em;
-            border: 2px solid #fddb3a;
-            border-radius: 5px;
-        }
-
-        #search-bar button {
-            padding: 10px 20px;
-            font-size: 1em;
-            background-color: #fddb3a;
-            color: #16213e;
+        #marvin-toggle {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOIzZlRMwVLStLdbieCLBZVcZr8T3CdR_yNw&s');
+            background-size: cover;
+            background-position: center;
             border: none;
-            border-radius: 5px;
+            border-radius: 50%;
             cursor: pointer;
-            margin-left: 10px;
-            transition: transform 0.2s, background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            outline: none;
         }
 
-        #search-bar button:hover {
-            background-color: #e43f5a;
-            color: #ffffff;
-            transform: scale(1.05);
+        #marvin-toggle:hover {
+            transform: scale(1.1);
         }
 
-        #info {
-            margin-top: 20px;
-            font-size: 1.2em;
-        }
-
-        #info img {
-            max-width: 300px;
-            margin-top: 10px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .item-buttons button {
-            margin: 5px;
-            padding: 10px 20px;
-            font-size: 1em;
+        #marvin-expanded {
+            display: none;
+            width: 300px;
+            height: 400px;
             background-color: #16213e;
-            color: #fddb3a;
-            border: 2px solid #fddb3a;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.3s;
-        }
-
-        .item-buttons button:hover {
-            background-color: #e43f5a;
-            border-color: #e43f5a;
-        }
-
-        #info-table table {
-            margin: 20px auto;
-            border-collapse: collapse;
-            width: 80%;
-        }
-
-        #info-table table, #info-table th, #info-table td {
-            border: 1px solid #fddb3a;
-        }
-
-        #info-table th, #info-table td {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             padding: 10px;
-            text-align: left;
-        }
-
-        #info-table th {
-            background-color: #1f4068;
-            color: #ffffff;
-        }
-
-        #info-table td {
-            background-color: #16213e;
-            color: #fddb3a;
+            position: fixed;
+            bottom: 130px;
+            right: 20px;
+            overflow-y: auto;
         }
 
         #chat-display p {
@@ -214,114 +146,15 @@
             margin-right: auto;
             text-align: left;
         }
-.category-buttons button:nth-last-child(1) {
-    background-color: #e43f5a;
-    color: #ffffff;
-    font-weight: bold;
-    border: 2px solid #fddb3a;
-    border-radius: 15px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-}
-
-.category-buttons button:nth-last-child(1):hover {
-    background-color: #fddb3a;
-    color: #16213e;
-    transform: scale(1.2);
-}
-#restaurant-section {
-    background: linear-gradient(to bottom, #000428, #004e92);
-    color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-#countdown {
-    font-family: "Courier New", monospace;
-    color: #fddb3a;
-}
-#guide-device {
-    position: fixed;
-    bottom: 50px;
-    left: 50px;
-    width: 100px;
-    
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    border: 2px solid #fddb3a;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(255, 219, 58, 0.8), inset 0 0 10px rgba(255, 219, 58, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    animation: float 3s ease-in-out infinite;
-}
-
-#guide-device:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 30px rgba(255, 219, 58, 1), inset 0 0 20px rgba(255, 219, 58, 0.7);
-}
-
-#dont-panic-text {
-    font-family: "Courier New", monospace;
-    font-size: 1.2em;
-    color: #fddb3a;
-    text-shadow: 0 0 10px #fddb3a, 0 0 20px #fddb3a;
-    text-align: center;
-}
-
-/* Animation for floating effect */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-#interactive-guide {
-    background: #16213e;
-    color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    width: 50%;
-    height: 40%;
-    overflow-y: auto;
-}
-#ingredients-container button {
-    margin: 5px;
-    padding: 10px 15px;
-    background-color: #16213e;
-    color: #fddb3a;
-    border: 2px solid #fddb3a;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.3s;
-}
-
-#ingredients-container button:hover {
-    background-color: #e43f5a;
-    border-color: #e43f5a;
-}
-   </style>
+    </style>
 </head>
 <body>
-<div id="guide-device" onclick="toggleGuideDevice()">
-    <p id="dont-panic-text">Don’t Panic</p>
-</div>
+    <div id="guide-device" onclick="toggleGuideDevice()">
+        <p id="dont-panic-text">Don’t Panic</p>
+    </div>
+
     <h1>Hitchhiker's Guide to the Galaxy</h1>
     <p>Explore the wonders of the universe! Choose a category to learn more:</p>
-
-    <div id="search-bar">
-        <input type="text" id="search-input" placeholder="Search for something...">
-        <button onclick="searchItem()">Search</button>
-    </div>
 
     <div class="category-buttons">
         <button onclick="showCategory('planets')">Planets</button>
@@ -331,74 +164,14 @@
         <button onclick="showCategory('technologyAndTools')">Technology and Tools</button>
         <button onclick="showCategory('philosophyAndFun')">Philosophy and Fun</button>
         <button onclick="showCategory('quirkyItems')">Quirky Items</button>
-
-<button onclick="generateImprobability()">Infinite Improbability Generator</button>
-<button onclick="showRestaurant()">Restaurant at the End of the Universe</button>
-<button onclick="showGargleBlasterGame()" style="padding: 15px 25px; font-size: 1.1em; background-color: #1f4068; color: #ffffff; border: none; border-radius: 10px; cursor: pointer; transition: transform 0.2s, background-color 0.3s;">
-    Make a Pan Galactic Gargle Blaster
-</button>
-<button onclick="returnToGuide()" style="margin-top: 20px; padding: 10px 20px; background-color: #fddb3a; color: #16213e; border: none; border-radius: 5px; cursor: pointer;">
-    Back to the Guide
-</button>
+        <button onclick="generateImprobability()">Infinite Improbability Generator</button>
+        <button onclick="showRestaurant()">Restaurant at the End of the Universe</button>
+        <button onclick="showGargleBlasterGame()">Make a Pan Galactic Gargle Blaster</button>
     </div>
-
-    <div id="info">
-        <h2 id="info-title">Welcome!</h2>
-        <p id="info-description">Select a category above to learn more.</p>
-        <img id="info-image" style="display:none;" alt="">
-        <div class="item-buttons" id="item-buttons"></div>
-        <div id="info-table" style="display:none;"></div>
-<p id="quote-of-the-day" style="margin-top: 10px; font-style: italic; color: #e43f5a;">Loading quote...</p>
-    </div>
-
-<div id="gargle-blaster-game" style="display: none; margin-top: 20px; text-align: center;">
-    <h2 style="color: #fddb3a;">Pan Galactic Gargle Blaster Simulator</h2>
-    <p>Mix ingredients to create the perfect drink. But beware, the effects might surprise you!</p>
-    <div id="ingredients-container">
-        <button onclick="addIngredient('slice of lemon wrapped around a gold brick')">Add a slice of lemon wrapped around a gold brick</button>
-        <button onclick="addIngredient('Ol’ Janx Spirit')">Add Ol’ Janx Spirit</button>
-        <button onclick="addIngredient('Zamphour')">Add Zamphour</button>
-        <button onclick="addIngredient('Fallian marsh gas')">Add Fallian marsh gas</button>
-        <button onclick="addIngredient('Algolian sun tiger teeth')">Add Algolian sun tiger teeth</button>
-        <button onclick="addIngredient('water from the seas of Santraginus V')">Add water from the seas of Santraginus V</button>
-    </div>
-    <p id="current-ingredients" style="color: #ffffff; margin-top: 20px;">Current Ingredients: None</p>
-    <button onclick="mixDrink()" style="margin-top: 20px; padding: 10px 20px; background-color: #fddb3a; color: #16213e; border: none; border-radius: 5px;">Mix the Drink</button>
-    <p id="drink-result" style="margin-top: 20px; color: #e43f5a;"></p>
-    <button onclick="returnToGuide()" style="margin-top: 20px; padding: 10px 20px; background-color: #fddb3a; color: #16213e; border: none; border-radius: 5px;">Back to Guide</button>
-</div>
-
-<div id="restaurant-section" style="display: none; margin-top: 40px;">
-    <h2 style="color: #fddb3a;">The Restaurant at the End of the Universe</h2>
-    <p>Enjoy a dining experience while witnessing the end of time itself!</p>
-
-    <!-- Countdown Timer -->
-    <div id="countdown" style="font-size: 1.5em; margin-bottom: 20px;">
-        Time until the end of the universe: <span id="countdown-timer">Loading...</span>
-    </div>
-
-    <!-- Menu -->
-    <h3 style="color: #fddb3a;">Menu</h3>
-    <ul style="list-style: none; padding: 0;">
-        <li style="margin-bottom: 10px;">🍹 <strong>Pan Galactic Gargle Blaster</strong> - A drink guaranteed to knock your socks off!</li>
-        <li style="margin-bottom: 10px;">🍔 <strong>Perfectly Normal Beast Burger</strong> - 100% normal (or so they say).</li>
-        <li style="margin-bottom: 10px;">🥗 <strong>Salad of Sens-O-Matic Greens</strong> - Locally sourced from Magrathea.</li>
-        <li style="margin-bottom: 10px;">🍨 <strong>Ice Cream of Infinite Improbabilities</strong> - Flavors change every bite!</li>
-    </ul>
-</div>
-
 
     <div id="marvin-chat">
-    <button id="marvin-toggle" onclick="toggleChat()"></button>
-    <div id="marvin-expanded">
-        <h3 style="color: #fddb3a; text-align: center;">Ask Marvin, the Paranoid Android!</h3>
-        <div id="chat-display" style="border: 1px solid #fddb3a; height: 200px; overflow-y: auto; background-color: #1a1a2e; padding: 10px; border-radius: 5px; color: #fddb3a; margin-bottom: 10px;"></div>
-        <input type="text" id="chat-input" placeholder="Ask Marvin something..." style="width: calc(100% - 20px); padding: 5px; border-radius: 5px; border: 1px solid #fddb3a; margin-bottom: 10px;">
-        <button onclick="sendMessage()" style="width: 100%; padding: 10px; background-color: #fddb3a; color: #16213e; border: none; border-radius: 5px;">Send</button>
-    </div>
-</div>
-
-        <div id="marvin-expanded" style="display: none; width: 300px; height: 400px; background-color: #16213e; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); padding: 10px;">
+        <button id="marvin-toggle" onclick="toggleChat()"></button>
+        <div id="marvin-expanded">
             <h3 style="color: #fddb3a; text-align: center;">Ask Marvin, the Paranoid Android!</h3>
             <div id="chat-display" style="border: 1px solid #fddb3a; height: 200px; overflow-y: auto; background-color: #1a1a2e; padding: 10px; border-radius: 5px; color: #fddb3a; margin-bottom: 10px;"></div>
             <input type="text" id="chat-input" placeholder="Ask Marvin something..." style="width: calc(100% - 20px); padding: 5px; border-radius: 5px; border: 1px solid #fddb3a; margin-bottom: 10px;">
@@ -407,478 +180,18 @@
     </div>
 
     <script>
-// Disable Right-Click
-document.addEventListener("contextmenu", function (event) {
-    event.preventDefault();
-    alert("Right-click is disabled.");
-});
-
-// Disable DevTools (F12, Ctrl+Shift+I, Ctrl+Shift+J)
-document.addEventListener("keydown", function (event) {
-    if (
-        event.key === "F12" || 
-        (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) ||
-        (event.ctrlKey && event.key === "U") ||
-        (event.metaKey && event.altKey && event.key.toUpperCase() === "U") // ⌘ + Option + U
-    ) {
-        event.preventDefault();
-        alert("Keyboard shortcuts are disabled!");
-        return false;
-    }
-});
-
-// Disable Copy-Paste
-document.addEventListener("copy", function (event) {
-    event.preventDefault();
-    alert("Copying is disabled!");
-});
-
-
-
-        
-function returnToGuide() {
-    document.getElementById("passport").style.display = "none"; // Hide passport section
-    document.getElementById("info").style.display = "block"; // Show main guide
-}
-
-const quotes = [
-    "Ford... you're turning into a penguin. Stop it.",
-    "Time is an illusion. Lunchtime doubly so.",
-    "The ships hung in the sky in much the same way that bricks don't.",
-    "So long, and thanks for all the fish.",
-    "Don’t panic.",
-    "The answer to the ultimate question of life, the universe, and everything is 42.",
-    "Anyone who is capable of getting themselves made President should on no account be allowed to do the job.",
-    "In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move."
-];
-
-function displayRandomQuote() {
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    document.getElementById("quote-of-the-day").textContent = Quote of the Day: "${randomQuote}";
-}
-
-// Display the quote when the page loads
-document.addEventListener("DOMContentLoaded", displayRandomQuote);
-
-let ingredients = [];
-
-function showGargleBlasterGame() {
-    document.getElementById("info").style.display = "none"; // Hide the guide
-    document.getElementById("gargle-blaster-game").style.display = "block"; // Show the game
-}
-
-function addIngredient(ingredient) {
-    if (ingredients.length >= 6) {
-        alert("You can only add up to 6 ingredients!");
-        return;
-    }
-    ingredients.push(ingredient);
-    document.getElementById("current-ingredients").textContent = Current Ingredients: ${ingredients.join(", ")};
-}
-
-function mixDrink() {
-    if (ingredients.length === 0) {
-        document.getElementById("drink-result").textContent = "You didn't add any ingredients. This is just plain water!";
-        return;
-    }
-
-    const resultMessages = [
-        "Your brain feels like it’s been smashed by a slice of lemon wrapped around a large gold brick!",
-        "Congratulations! You made the perfect Pan Galactic Gargle Blaster. You feel invincible!",
-        "Oops! You accidentally created a black hole. Better luck next time!",
-        "Your drink exploded! That’s too much Fallian marsh gas.",
-        "Your drink tastes suspiciously like Vogon poetry... but you survived!",
-        "You created a mild Gargle Blaster. It's drinkable but lacks the punch."
-    ];
-
-    const randomResult = resultMessages[Math.floor(Math.random() * resultMessages.length)];
-    document.getElementById("drink-result").textContent = randomResult;
-
-    // Reset ingredients
-    ingredients = [];
-    document.getElementById("current-ingredients").textContent = "Current Ingredients: None";
-}
-
-function returnToGuide() {
-    document.getElementById("gargle-blaster-game").style.display = "none"; // Hide the game
-    document.getElementById("info").style.display = "block"; // Show the guide
-}
-
-let isGuideOpen = false;
-
-function toggleGuideDevice() {
-    const guide = document.getElementById("interactive-guide");
-    const device = document.getElementById("guide-device");
-
-    isGuideOpen = !isGuideOpen;
-
-    if (isGuideOpen) {
-        guide.style.display = "block";
-        device.style.display = "none"; // Hide the glowing book when the guide is open
-    } else {
-        guide.style.display = "none";
-        device.style.display = "flex"; // Show the glowing book when the guide is closed
-    }
-}
-
-function returnToGuide() {
-    document.getElementById("restaurant-section").style.display = "none";
-    document.getElementById("info").style.display = "block";
-}
-
-// Show the Restaurant Section
-function showRestaurant() {
-    // Hide other sections
-    document.getElementById("info").style.display = "none";
-    document.getElementById("restaurant-section").style.display = "block";
-
-    // Start the countdown timer
-    startCountdown();
-}
-
-// Countdown Timer Function
-function startCountdown() {
-    const endTime = new Date(); // Set the end time (e.g., 5 minutes from now)
-    endTime.setMinutes(endTime.getMinutes() + 5);
-
-    function updateCountdown() {
-        const now = new Date();
-        const timeRemaining = endTime - now;
-
-        if (timeRemaining <= 0) {
-            document.getElementById("countdown-timer").textContent = "BOOM! The universe has ended. Enjoy the show!";
-            clearInterval(countdownInterval); // Stop the countdown
-        } else {
-            const minutes = Math.floor(timeRemaining / 60000);
-            const seconds = Math.floor((timeRemaining % 60000) / 1000);
-            document.getElementById("countdown-timer").textContent = ${minutes}m ${seconds}s;
-        }
-    }
-
-    updateCountdown();
-    const countdownInterval = setInterval(updateCountdown, 1000); // Update every second
-}
-
-function generateImprobability() {
-    // Get all categories from the guide
-    const categories = Object.keys(guide);
-
-    // Randomly select a category
-    const randomCategory = categories[Math.floor(Math.random() * categories.length)];
-
-    // Get all items in the chosen category
-    const items = Object.keys(guide[randomCategory]);
-
-    // Randomly select an item
-    const randomItem = items[Math.floor(Math.random() * items.length)];
-
-    // Display the item using the existing showItem function
-    showItem(randomCategory, randomItem);
-}
-
-        const guide = {
-            planets: { 
-betelgeuse: { title: "Betelgeuse V", description: "A planet part of the betgeusian interplanetary system. Home of Ford Prefect", image: "https://cdn.eso.org/images/publicationjpg/potw1726b.jpg" },
-
-santraginus: { 
-title: "Santraginus V", description: "A planet which has magnificent beaches. The sea water is an ingredient in the PAN GALACTIC GARGLE BLASTER. ", image: "https://external-preview.redd.it/k1-Tf61mndtb_dnAw3dwBw4JLei0v5YkTy0XLsOOgBw.jpg?width=1080&crop=smart&auto=webp&s=d2d1f40357b185e1ccec7ee735050aeea876b39d" },
-                magrathea: { title: "Magrathea", description: "A planet which creates custom luxury planets.", image: "https://static.wikia.nocookie.net/alienencyclopedia/images/3/37/Magrathea.jpg/revision/latest?cb=20190417031700" },
-                
-earth: { 
-title: "Earth", description: "A mostly harmless planet.", image: "https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg" },
-                magrathea: { title: "Magrathea", description: "A planet which creates custom luxury planets.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmTY3I_qYb3Ny9ijCSL1Ypv_vFJ79Q1kIwuQ&s" },
-                krikkit: { title: "Krikkit", description: "A planet wanting to destroy the universe.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCneq8r97bm8xl2yOseu3UCbVsadEhmhdYfg&s" }
-                
-},
-            characters: {
-
-arthur: {
-                    title: "Arthur Dent",
-                    description: "An ordinary human swept into interstellar adventures.",
-                    image: "https://static.wikia.nocookie.net/hitchhikers/images/a/ae/Arthur_Dent_TV.png/revision/latest?cb=20230627160818",
-                    table: [
-                        { property: "Gender", value: "Male" },
-                        { property: "Type", value: "Human" },
-                        { property: "Role", value: "Reluctant protagonist" }
-                    ]
-                },
-frenchurch: {
-                    title: "Frenchurch",
-                    description: "A human who travels the universe along with Arthur Dent.",
-                    image: "https://static.wikia.nocookie.net/hitchhikers/images/e/e1/Fenchurch.png/revision/latest?cb=20091120075659",
-                    table: [
-                        { property: "Gender", value: "Female" },
-                        { property: "Type", value: "Human" },
-                        { property: "Role", value: "Interstellar Hitchhiker" }
-                    ]
-                },
-
-eddie: {
-                    title: "Eddie",
-                    description: "A cheerful and overly enthusiastic shipboard computer on the Heart of Gold.",
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgkgK82jH_QIYvQl8rnSEj7klBLF8EKxA_RQ&s",
-                    table: [
-                        { property: "Gender", value: "N/A" },
-                        { property: "Type", value: "AI" },
-                        { property: "Role", value: "AI of The Heart Of Gold" }
-                    ]
-                },
-
-    ford: {
-                    title: "Ford Prefect",
-                    description: "A Betelgeusian alien and not an actual car model. Researcher for the 'Hitchhiker Guide to the galaxy'.",
-                    image: "https://static.wikia.nocookie.net/p__/images/c/cc/Fordprefect.jpg/revision/latest/scale-to-width/360?cb=20210521105409&path-prefix=protagonist",
-                    table: [
-                        { property: "Gender", value: "Male" },
-                        { property: "Type", value: "Betelgeusian" },
-                        { property: "Role", value: "Researcher for the Guide" }
-                    ]
-                },
-                zaphod: {
-                    title: "Zaphod Beeblebrox",
-                    description: "Two-headed ex-President of the Galaxy. Famous for the words 'Zark off'.",
-                    image: "https://upload.wikimedia.org/wikipedia/en/7/72/Mark_Wing-Davey_as_Zaphod_Beeblebrox.jpg",
-                    table: [
-                        { property: "Gender", value: "Male" },
-                        { property: "Type", value: "Betelgeusian" },
-                        { property: "Role", value: "Eccentric leader" }
-                    ]
-                },
-                trillian: {
-                    title: "Trillian",
-                    description: "The only other Earth survivor. Currently travelling with Zaphod Beeblebrox.",
-                    image: "https://static.wikia.nocookie.net/hitchhikers/images/e/e9/Trillian_film.png/revision/latest/scale-to-width/360?cb=20230627162609",
-                    table: [
-                        { property: "Gender", value: "Female" },
-                        { property: "Type", value: "Human" },
-                        { property: "Role", value: "Astrophysicist and companion" }
-                    ]
-                },
-                marvin: {
-                    title: "Marvin",
-                    description: "A depressed robot with immense intelligence. Died of old age later on.",
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkqkYROrfDLrr0Mvi5rFFt6a6q0dnG9-Tcsg&s",
-                    table: [
-                        { property: "Gender", value: "N/A" },
-                        { property: "Type", value: "Robot" },
-                        { property: "Role", value: "Paranoid android" }
-                    ]
-                },
-                slartibartfast: {
-                    title: "Slartibartfast",
-                    description: "A coastline and fjord specialist. Created Norway on Earth.",
-                    image: "https://static.wikia.nocookie.net/hitchhikers/images/b/b6/Slartibartfast_TV.png/revision/latest?cb=20230704150522",
-                    table: [
-                        { property: "Gender", value: "Male" },
-                        { property: "Type", value: "Magrathean" },
-                        { property: "Role", value: "Planet designer" }
-                    ]
-                }
- },
-            universe: {
-                42: { title: "42", description: "The Answer to Life, the Universe, and Everything.", image: "https://miro.medium.com/v2/resize:fit:1400/1*oA63oJ2qoBYiIQ4Wzy8YKw.png" },
-                panGalactic: { title: "Pan Galactic Gargle Blaster", description: "The best drink in existence Once you drink it, your brain feels like it's been smashed by a lemon and wrapped around by a gold brick.", image: "https://static.wikia.nocookie.net/hitchhikers/images/f/fa/Normal_pangalacticgargleblaster.jpg/revision/latest?cb=20080505075333" }, 
-                deepThought: { title: "Deep Thought", description: "The computer that calculated the answer for life, the universe, and everything.", image: "https://static.wikia.nocookie.net/hitchhikers/images/d/dc/Deep_Thought_film.png/revision/latest?cb=20230901141923" },
-                restaurant: { title: "Restaurant at the End of the Universe", description: "A restaurant watching time end.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRifNKf9lsbv1RWFM_lbxiqpbRrrdCTbJEqCA&s" }
- },
-            livingBeings: {
-               babelFish: { title: "Babel Fish", description: "A telepathic fish for translation.", image: "https://jodilacoe.com/wp-content/uploads/2017/12/babel-fish.jpg?w=640" },
-                humans: { title: "Humans", description: "Mostly harmless beings from Earth.", image: "https://cdn.britannica.com/36/79536-050-BE1C475B/human-lineage-hominins-members-lineages-apes-interpretations.jpg" },
-                vogons: { title: "Vogons", description: "Unpleasant bureaucratic beings. Responsible for destroying Earth.", image: "https://static.wikia.nocookie.net/villains/images/f/f4/Jeltz_Movie.jpg/revision/latest?cb=20181015202428" },
-                dolphins: { title: "Dolphins", description: "Intelligent beings who said 'So long, and thanks for the fish!'. They tried to warn humans about the apocolypse.", image: "https://cdn.sanity.io/images/esqfj3od/production/963c30762c0e8480b60ff627fb82dbec2b9f1339-1080x720.webp?w=3840&q=65&fit=clip&auto=format" }
- },
-            technologyAndTools: {
-heartgold: { title: "The Heart Of Gold", description: "The starship Heart of Gold was the first spacecraft to make use of the Infinite Improbability Drive.", image: "https://static.wikia.nocookie.net/hitchhikers/images/4/42/Heart_of_gold.jpg/revision/latest?cb=20180825173635" },
-
-                improbabilityDrive: { title: "Infinite Improbability Drive", description: "Allows simultaneous existence. Also allows you to travel at an immense speed.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV_IeZUUmwhn41Wj77L5FhEB4QUE2yXSn3rQ&s" },
-                sensOMatic: { title: "Sub-Etha Sens-O-Matic", description: "Lets hitchhikers flag spaceships.", image: "https://static.wikia.nocookie.net/hitchhikers/images/3/3e/Subetha.jpg/revision/latest?cb=20181213011815" },
-                guideDevice: { title: "Hitchhiker's Guide Device", description: "Has  'Don't Panic' on the cover. Tells you everything about the galaxy (or everything worth knowing)", image: "https://static.wikia.nocookie.net/hitchhikers/images/e/e1/Guide.jpg/revision/latest?cb=20080505045130" }
-},
-            philosophyAndFun: { 
-                shoeHorizon: { title: "Shoe Event Horizon", description: "Economy collapses due to shoes. People couldn't make anything else. They felt that they HAD to make shoes", image: "https://polyarchive.com/wp-content/uploads/2022/01/np_nvruhpuo.jpg" },
-                bistromathics: { title: "Bistromathics", description: "Math based on restaurant bills.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEo4JgOf_Onoq7IW-QU6W01_BTj3dvKTKaWQ&s" }
-},
-            quirkyItems: {
-                vortex: { title: "Total Perspective Vortex", description: "Shows your place in the infinite universe. Most people go mad after seeing this.", image: "https://static.wikia.nocookie.net/hitchhikers/images/9/91/Youarehere.jpg/revision/latest?cb=20200306004146" },
-gun: { title: "Kill-O-Zap Gun", description: "The Kill-o-Zap is a blaster gun weapon which was wielded by the police from Blagulon Kappa when they came to Magrathea to arrest Zaphod. It was first mentioned in the novel The Hitchhiker's Guide to the Galaxy and subsequently referenced throughout the series in the role of a standard and widespread brand of raygun.", image: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/073daa77-1c37-4a3d-b22e-dbe77d6b256b/d6ht56z-bc2a9883-37e0-4f59-9a05-c57d13126363.jpg/v1/fill/w_1024,h_768,q_75,strp/kill_o_zap_blaster___h2g2_gun_by_dontoby_d6ht56z-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzY4IiwicGF0aCI6IlwvZlwvMDczZGFhNzctMWMzNy00YTNkLWIyMmUtZGJlNzdkNmIyNTZiXC9kNmh0NTZ6LWJjMmE5ODgzLTM3ZTAtNGY1OS05YTA1LWM1N2QxMzEyNjM2My5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.W-0XHhAdzmR2l3lWWOHdsry5gkxRqVGKoYBYVr1VDbY" },
-
-                 towel: { title: "Towel", description: "A towel is just about the most massively useful thing an interstellar hitchhiker can carry. Partly because it has great practical value. You can wrap it around you for warmth as you bound across the cold moons of Jaglan Beta; you can lie on it on the brilliant marble-sanded beaches of Santraginus V, inhaling the heady sea vapours; you can sleep under it beneath the stars which shine so redly on the desert world of Kakrafoon; use it to sail a miniraft down the slow heavy River Moth; wet it for use in hand-to-hand combat; wrap it around your head to ward off noxious fumes or avoid the gaze of the Ravenous Bugblatter Beast of Traal (a mind-bogglingly stupid animal, it assumes that if you can't see it, it can't see you — daft as a brush, but very very ravenous); you can wave your towel in emergencies as a distress signal, and of course you can dry yourself off with it if it still seems to be clean enough.", image: "https://www.hcnewton.com/irrreader/emergtowel.jpg" },
-
-                somebodyElse: { title: "Somebody Else's Problem Field", description: "Hides things by making them ignored.", image: "https://miro.medium.com/v2/resize:fit:500/1*j8AaATCwKgGRco5N7gI7JA.jpeg" },
-                genuineAI: { title: "Genuine People Personalities", description: "Annoying AI personalities. Most people hate it.", image: "https://miro.medium.com/v2/resize:fit:960/1*FbuZTlwr8BkpQw7ElHCisg.jpeg" }
- }
-        };
-
-        function showCategory(category) {
-            const infoTitle = document.getElementById("info-title");
-            const infoDescription = document.getElementById("info-description");
-            const infoImage = document.getElementById("info-image");
-            const itemButtons = document.getElementById("item-buttons");
-            const infoTable = document.getElementById("info-table");
-
-            infoTitle.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-            infoDescription.textContent = "Select an item below to learn more.";
-            infoImage.style.display = "none";
-            itemButtons.innerHTML = "";
-            infoTable.style.display = "none";
-
-            for (const key in guide[category]) {
-                const item = guide[category][key];
-                const button = document.createElement("button");
-                button.textContent = item.title;
-                button.onclick = () => showItem(category, key);
-                itemButtons.appendChild(button);
-            }
+        function showGargleBlasterGame() {
+            alert("You are about to mix the strongest drink in existence: The Pan Galactic Gargle Blaster. Choose your ingredients wisely!");
         }
 
-        function showItem(category, key) {
-            const item = guide[category][key];
-            const infoTitle = document.getElementById("info-title");
-            const infoDescription = document.getElementById("info-description");
-            const infoImage = document.getElementById("info-image");
-
-            infoTitle.textContent = item.title;
-            infoDescription.textContent = item.description;
-            if (item.image) {
-                infoImage.src = item.image;
-                infoImage.style.display = "block";
-            } else {
-                infoImage.style.display = "none";
-            }
-
-            const infoTable = document.getElementById("info-table");
-            if (item.table) {
-                infoTable.innerHTML = `<table>
-                    <tr><th>Property</th><th>Value</th></tr>
-                    ${item.table.map(row => <tr><td>${row.property}</td><td>${row.value}</td></tr>).join("")}
-                </table>`;
-                infoTable.style.display = "block";
-            } else {
-                infoTable.style.display = "none";
-            }
+        function showRestaurant() {
+            alert("Welcome to the Restaurant at the End of the Universe! The show starts soon.");
         }
-
-        function searchItem() {
-            const query = document.getElementById("search-input").value.toLowerCase();
-            for (const category in guide) {
-                for (const key in guide[category]) {
-                    if (key.includes(query)) {
-                        showItem(category, key);
-                        return;
-                    }
-                }
-            }
-            const infoTitle = document.getElementById("info-title");
-            const infoDescription = document.getElementById("info-description");
-            const infoImage = document.getElementById("info-image");
-
-            infoTitle.textContent = "Don't Panic";
-            infoDescription.textContent = "No matching entry found.";
-            infoImage.style.display = "none";
-        }
-
-        let isChatOpen = false;
 
         function toggleChat() {
-            const chat = document.getElementById("marvin-expanded");
-            const button = document.getElementById("marvin-toggle");
-
-            isChatOpen = !isChatOpen;
-
-            if (isChatOpen) {
-                chat.style.display = "block";
-                button.textContent = "Close Marvin";
-            } else {
-                chat.style.display = "none";
-                button.textContent = "Don’t click on me and ask questions, I’m too depressed.";
-            }
+            const chatBox = document.getElementById("marvin-expanded");
+            chatBox.style.display = chatBox.style.display === "block" ? "none" : "block";
         }
-
-        const responses = {
-            "hello": "Hello. Here I am, brain the size of a planet, and you're asking me to say hello.",
-    "42": "42 is the Answer to the Ultimate Question of Life, the Universe, and Everything.",
-    "who are you": "I'm Marvin, the paranoid android. What do you want?",
-    "what is the hitchhiker's guide": "The Hitchhiker's Guide is a book written by Douglas Adams. It's mostly harmless.",
-    "what is an improbability drive": "It's a propulsion system allowing a ship to pass through every conceivable point in every conceivable universe simultaneously.",
-        "what is magrathea": "Magrathea is a planet where custom luxury planets are built for wealthy clients. Too boring for me.",
-    "who is arthur dent": "Arthur Dent is an ordinary human who was swept into interstellar adventures after Earth's destruction. I don't hate him as much as the others.",
-    "who is zaphod beeblebrox": "Zaphod Beeblebrox is the two-headed, three-armed ex-President of the Galaxy. He's eccentric, to say the least.",
-    "who is trillian": "Trillian is the only other Earth survivor, traveling with Zaphod Beeblebrox.",
-    "who is marvin": "That's me. I am a depressed robot with a brain the size of a planet. I thinks everything is pointless.",
-    "who is slartibartfast": "Slartibartfast is a planetary designer specializing in coastlines and fjords. He won an award for Norway. I should win an award for being so depressed.",
-    "what is krikkit": "Krikkit is a planet whose inhabitants wanted to destroy the universe due to their insular outlook.",
-    "what is a babel fish": "The Babel Fish is a small, leech-like creature that can telepathically translate languages when inserted into one's ear.",
-    "what are vogons": "Vogons are unpleasant bureaucratic beings responsible for destroying Earth to make way for a hyperspace bypass. I didn't care Earth was destroyed though.",
-    "what are dolphins": "Dolphins are intelligent beings who left Earth before its destruction, famously saying, 'So long, and thanks for all the fish!'.",
-    "what is a shoe event horizon": "A Shoe Event Horizon occurs when an economy collapses because it becomes overly reliant on manufacturing and selling shoes. How astronomically dumb.",
-    "what is bistromathics": "Bistromathics is a revolutionary way of navigating faster-than-light spaceships using the mathematics of restaurants.",
-    "what is a total perspective vortex": "The Total Perspective Vortex shows you your insignificant place in the infinite universe. Most people go mad or are depressed after seeing it. I am depressed without even seeing it.",
-    "what is somebody else's problem field": "It's a cloaking device that makes things invisible by convincing people to ignore them. Very useful for inconvenient objects.",
-    "what are genuine people personalities": "Genuine People Personalities are AI systems in ships and robots that are often annoying or overly emotional. They are not a very smart bunch.",
-    "what is the restaurant at the end of the universe": "The Restaurant at the End of the Universe is a dining establishment where patrons can watch the end of time itself. The group I was travelling with left me and went there. I had to wait billions of years to meet them again",
-    "who is frenchurch": "Dunno, never met her.",
-    "who is ford prefect": "A interstelar hitchhiker and friend of arthur dent. Has a brain of a ravenous bugblatter",
-    "what is a kill o zap gun": "A gun that has a right end and a wrong end.",
-    "what is a towel": "A towel is the most useful thing an interstellar hitchhiker can have.",
-    "what is betelgeuse v": "The fifth planet in the betelgeuse planetery system. Home of Ford Prefect.",
-    "what is satraginus v": "a planet with an 'amazing' ocean. I hate the ocean",
-"bye": "Goodbye. Hope I never see you again.",
-"thank you": "Don't try to be kind to me. It doesn't work",
-
-    "default": "I understood that, but i'm too depressed to care."    
-        };
-
-        function sendMessage() {
-            const userMessage = document.getElementById("chat-input").value.trim().toLowerCase();
-            const chatDisplay = document.getElementById("chat-display");
-
-            if (userMessage === "") return;
-
-            chatDisplay.innerHTML += <p class="user"><strong>You:</strong> ${userMessage}</p>;
-            const botResponse = responses[userMessage] || responses["default"];
-
-            setTimeout(() => {
-                chatDisplay.innerHTML += <p class="bot"><strong>Marvin:</strong> ${botResponse}</p>;
-                chatDisplay.scrollTop = chatDisplay.scrollHeight;
-            }, 500);
-
-            document.getElementById("chat-input").value = "";
-        }
-    
-function showItem(category, key) {
-    const item = guide[category][key];
-    const infoTitle = document.getElementById("info-title");
-    const infoDescription = document.getElementById("info-description");
-    const infoImage = document.getElementById("info-image");
-
-    infoTitle.textContent = item.title;
-    infoDescription.textContent = item.description;
-
-    if (item.image) {
-        infoImage.src = item.image;
-        infoImage.style.display = "block";
-    } else {
-        infoImage.style.display = "none";
-    }
-
-    const infoTable = document.getElementById("info-table");
-    if (item.table) {
-        infoTable.innerHTML = `<table>
-            <tr><th>Property</th><th>Value</th></tr>
-            ${item.table.map(row => <tr><td>${row.property}</td><td>${row.value}</td></tr>).join("")}
-        </table>`;
-        infoTable.style.display = "block";
-    } else {
-        infoTable.style.display = "none";
-    }
-
-    // *Scroll to the bottom of the page*
-    setTimeout(() => {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-    }, 300);
-}
-
     </script>
 </body>
 </html>
-
