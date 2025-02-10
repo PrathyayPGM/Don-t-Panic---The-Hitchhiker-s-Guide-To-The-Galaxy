@@ -444,7 +444,7 @@
     <script>
         document.addEventListener("contextmenu", function (event) {
     event.preventDefault();
-    alert("Right-click is disabled.");
+    alert("Right-click is disabled. You can't copy my work!");
 });
         // Disable DevTools (F12, Ctrl+Shift+I, Ctrl+Shift+J)
 document.addEventListener("keydown", function (event) {
@@ -455,7 +455,7 @@ document.addEventListener("keydown", function (event) {
         (event.metaKey && event.altKey && event.key.toUpperCase() === "U") // ⌘ + Option + U
     ) {
         event.preventDefault();
-        alert("Keyboard shortcuts are disabled!");
+        alert("Keyboard shortcuts are disabled! Good try though.");
         return false;
     }
 });
