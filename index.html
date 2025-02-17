@@ -441,6 +441,38 @@
         </div>
     </div>
     <script>
+        function requestNotificationPermission() {
+    if ("Notification" in window) {
+        Notification.requestPermission().then(permission => {
+            if (permission === "granted") {
+                alert("Notifications enabled!");
+                showNotification("Welcome!", "Thanks for allowing notifications.");
+            } else {
+                alert("Notifications are blocked. Please allow them in your browser settings.");
+            }
+        });
+    } else {
+        alert("Your browser does not support notifications.");
+    }
+}
+
+// Function to Show a Notification
+function showNotification(title, message) {
+    if (Notification.permission === "granted") {
+        new Notification(title, {
+            body: message,
+            icon: "https://cdn-icons-png.flaticon.com/512/609/609803.png"
+        });
+    }
+}
+
+// Ask for notification permission on page load
+document.addEventListener("DOMContentLoaded", () => {
+    if (Notification.permission !== "granted") {
+        requestNotificationPermission();
+    }
+});
+
       // Function to set a cookie
 function setCookie(name, value, days) {
     let expires = "";
