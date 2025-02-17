@@ -442,6 +442,35 @@
     </div>
 
     <script>
+        // 🍪 Function to Set a Cookie
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Convert days to milliseconds
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+}
+
+// 🍪 Function to Get a Cookie
+function getCookie(name) {
+    let nameEQ = name + "=";
+    let cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim();
+        if (cookie.indexOf(nameEQ) === 0) {
+            return decodeURIComponent(cookie.substring(nameEQ.length, cookie.length));
+        }
+    }
+    return null;
+}
+
+// 🍪 Function to Delete a Cookie
+function deleteCookie(name) {
+    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
         document.addEventListener("contextmenu", function (event) {
     event.preventDefault();
     alert("Right-click is disabled. You can't copy my work!");
@@ -876,6 +905,25 @@ gun: { title: "Kill-O-Zap Gun", description: "The Kill-o-Zap is a blaster gun we
             const chatDisplay = document.getElementById("chat-display");
 
             if (userMessage === "") return;
+
+                    // Save chat history in cookies
+        let chatHistory = getCookie("chatHistory") || "";
+        chatHistory += `You: ${userMessage}\nMarvin: ${botResponse}\n`;
+        setCookie("chatHistory", chatHistory, 1); // Save for 1 day
+
+    }, 500);
+
+    document.getElementById("chat-input").value = "";
+}
+
+// Load chat history when page loads
+document.addEventListener("DOMContentLoaded", function() {
+    let savedChat = getCookie("chatHistory");
+    if (savedChat) {
+        document.getElementById("chat-display").innerHTML = savedChat.replace(/\n/g, "<br>");
+    }
+});
+
 
             chatDisplay.innerHTML += `<p class="user"><strong>You:</strong> ${userMessage}</p>`;
             const botResponse = responses[userMessage] || responses["default"];
